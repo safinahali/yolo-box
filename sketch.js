@@ -1,6 +1,4 @@
-/*
-	mouseDragged
-*/
+//very basic front end to make bounding boxes with labels for Sharifa's YOLO UI
 
 var startX;
 var startY;
@@ -12,24 +10,19 @@ function preload() {
   img = loadImage('source.jpeg');
 }
 
-
 function setup() {
 	createCanvas(1200, 800);
 	background(220);
 }
-
-/* 
-	when the mouse button is pressed and moving (dragged)
-	draw an ellipse 
-*/
 
 function mousePressed() {
    startX = mouseX;
    startY = mouseY;
 }
 
+//this is updating the bounding boxes and the labels
+//may need to make some styling choices to make labels clear
 function draw() {
-  background(200);
   image(img, 10, 10);
   
   noFill();
@@ -49,13 +42,12 @@ function mouseDragged() {
     finY = mouseY-startY;
 }
 
-
+//may need to write an exit function here if no box is drawn
 function mouseReleased() {
   let labels = prompt("What are you trying to label:", "Dog");
   if (labels == null || labels == "") {
     words = "User cancelled the prompt.";
   } else {
     words = "Label: " + labels;
-  }  
-
+  } 
 }
